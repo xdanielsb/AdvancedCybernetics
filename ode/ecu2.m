@@ -3,7 +3,7 @@
     y1´´ -u(1 -y1^2)y1´'+ y1 = 0
 
     writing again with y1´ = y2 we get
-    y2´ = u(1 - y1^2)y2 - y1
+    y2´ = u(1 - y1^2)y2 - y1ze
 %}
 
 tspan = [0, 20];
