@@ -10,6 +10,10 @@ clear all
 close all
 format compact
 
+%od45, implementa la ecuacion diferencial 
+%ecuacione diferencial en el sistema. 
+
+
 %Constants
 Tm = 0.5; k = 15; tao = 2 ;
 
