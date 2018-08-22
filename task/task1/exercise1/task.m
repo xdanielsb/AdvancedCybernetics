@@ -2,9 +2,9 @@
     Name: Daniel Santos
     Desc: Solution task 1.1
 %}
-clc; clear all; close all;
+clc; clear all; close all; format compact;
 % boundaries levels water testing
-N = 200; from = 0; to= 12;
+N = 100; from = 0; to= 12;
 % rates of filling of the taps
 t1 = 0.01; t2 = 0.02; t3 = 0.03;
 
