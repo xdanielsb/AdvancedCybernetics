@@ -16,4 +16,4 @@ end
 
 %Unit Testing 
 plot( levelsWater, rateFill);
-axis([0,1.5, 0, t1+t2+t3])
+axis([0,1.5, 0, t1+t2+t3]);
