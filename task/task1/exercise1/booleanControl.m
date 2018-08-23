@@ -1,13 +1,13 @@
 function flow = booleanControl( waterLevel , q1, q2 , q3)
  heighTank= 1;
- P = [1/3 5/6 0.965]
- aLevel = waterLevel > 0;
- bLevel = waterLevel >= heighTank * P(1);
- cLevel = waterLevel >= heighTank * P(2);
- dLevel = waterLevel >= heighTank / P(3);
+ P = [0 1/3 5/6 193/200].*heighTank
+ aLevel = waterLevel >  P(1)
+ bLevel = waterLevel >= P(2);
+ cLevel = waterLevel >= P(3);
+ dLevel = waterLevel >= P(4);
  
  if cLevel
-     q1 = q1 * 1.8
+     q1 = q1 %* 1.8  change in the border
  end
  
  F1 = or( neg(cLevel) , aLevel);
