@@ -11,7 +11,7 @@ t1 = 0.01; t2 = 0.02; t3 = 0.03;
 %Creating the sample
 levelsWater = linspace(from,to, N);
 for i =  1:N
-  rateFill(i) = booleanControl( levelsWater(i), t1, t2 , t3);
+  rateFill(i) = difuseControl( levelsWater(i), t1, t2 , t3);
 end
 
 %Unit Testing 

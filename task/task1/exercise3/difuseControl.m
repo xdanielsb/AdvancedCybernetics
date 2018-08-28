@@ -1,8 +1,8 @@
-function flow = booleanControl( waterLevel , q1, q2 , q3)
+function flow = difuseControl( waterLevel , q1, q2 , q3)
  heighTank= 1;
  disp(waterLevel)
  fprintf(" waterLevel = %f\n", waterLevel)
- P = [[0,1/10],  [2/10, 3/10], [5/10, 6/10], [8/10, 10/10] ].*heighTank;
+ P = [[0,1/10],  [1/10, 3/10], [3/10, 8/10], [8/10, 10/10] ].*heighTank;
   
  aLevel = smf(waterLevel, [P(1), P(2)]);
 
@@ -14,12 +14,10 @@ function flow = booleanControl( waterLevel , q1, q2 , q3)
  
  fprintf(" a=%f, b=%f, c=%f, d=%f\n" , aLevel, bLevel, cLevel, dLevel);
 
- 
  %activation function
  F1 = or( neg(cLevel) , aLevel);
  F2 = neg( cLevel ) ;
  F3 = neg( bLevel );
- 
  
  flow =  q1*F1 + q2*F2 + q3*F3;
  fprintf(" flow = %f \n\n", flow);
