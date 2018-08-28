@@ -14,7 +14,7 @@ uZ =0.0;
 uA =A(1); uB = A(2); uC = A(3); uD = A(4); 
 
 %Test behaviour 
-from = -5; to = 5; N = 100;
+from = -1; to = 1; N = 100;
 levels = linspace(from,to, N);
 
 for i =  1:N
@@ -22,4 +22,4 @@ for i =  1:N
 end
 
 %Unit Testing 
-%plot( levels, rate);
+plot( levels, rate);
