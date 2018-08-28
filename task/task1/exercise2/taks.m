@@ -9,8 +9,8 @@ K = 8; b1=3; b0 = 3;
 
 H = 1;
 %Initial Values
-A = [-1/8, -1/4, 1, 1/8].*H*-1
-uZ =0.3; 
+A = [1/2, 1, -1/8, -1/4].*H
+uZ =0.0; 
 uA =A(1); uB = A(2); uC = A(3); uD = A(4); 
 
 %Test behaviour 
@@ -22,4 +22,4 @@ for i =  1:N
 end
 
 %Unit Testing 
-plot( levels, rate);
+%plot( levels, rate);

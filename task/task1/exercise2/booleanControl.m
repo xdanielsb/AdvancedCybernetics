@@ -8,10 +8,10 @@ function ans = booleanControl( u, una, unb, unc, und, uz )
  
  ans =  A*una + B*unb + C*unc + D*und +uz ;
  if( u == 0) 
-   ans = u
+   ans = u;
  end
  %disp(u);
- %fprintf("A = %f, B =%f, C=%f, D=%f, ans =%f\n", A, B, C, D, ans);
+ fprintf("A = %f, B =%f, C=%f, D=%f, ans =%f\n", A, B, C, D, ans);
     % una*F1 + unb*F2 + unc*F3
 end
 
