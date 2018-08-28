@@ -1,6 +1,7 @@
 function ans = difuseControl( u, una, unb, unc, und, uz )
 
- 
+P = [ [0.0 0.25] [0. 
+
  A = u >= 0.0 &&  u < 0.25;
  B = u >= 0.25; % &&  u <= 4;
  C = u >-0.25 &&  u < 0;
