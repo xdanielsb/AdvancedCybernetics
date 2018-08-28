@@ -1,9 +1,9 @@
 function ans = difuseControl( u, una, unb, unc, und, uz )
 
- A = gauss2mf(u, [10 0.1 10 0.25 ]);
+ A = gauss2mf(u, [0.2 0.1 0.2 0.25 ]);
  B = smf(u, [0.24 0.25]);
- C = gauss2mf(u, [10 -0.1 10 -0.25 ]);
- D = zmf(u, [-0.24 -0.25]);
+ C = gauss2mf(u, [0.2 -0.1 0.2 -0.25 ]);
+ D = zmf(u, [-0.25 -0.24]);
   
  ans =  A*una + B*unb + C*unc + D*und +uz ;
  
