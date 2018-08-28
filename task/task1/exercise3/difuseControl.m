@@ -1,7 +1,5 @@
 function flow = difuseControl( waterLevel , q1, q2 , q3)
  heighTank= 1;
- disp(waterLevel)
- fprintf(" waterLevel = %f\n", waterLevel)
  P = [[0,1/10],  [1/10, 3/10], [3/10, 8/10], [8/10, 10/10] ].*heighTank;
   
  aLevel = smf(waterLevel, [P(1), P(2)]);

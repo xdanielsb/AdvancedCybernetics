@@ -9,11 +9,29 @@ N = 100; from = 0; to= 12;
 t1 = 0.01; t2 = 0.02; t3 = 0.03;
 
 %Creating the sample
-levelsWater = linspace(from,to, N);
+levels = linspace(from,to, N);
 for i =  1:N
-  rateFill(i) = difuseControl( levelsWater(i), t1, t2 , t3);
+  rateFill(i) = difuseControl( levels(i), t1, t2 , t3);
 end
 
 %Unit Testing 
-plot( levelsWater, rateFill);
-axis([0,1.5, 0, t1+t2+t3]);
+% behavoiur
+plot( levels, rateFill);
+axis([0,0.5, 0, 0.5]);
+
+
+%difuse functions
+figure(2)
+heighTank= 1;
+P = [[0,1/10],  [1/10, 3/10], [3/10, 8/10], [8/10, 10/10] ].*heighTank;
+a = smf(levels, [P(1), P(2)]);
+b = smf(levels, [P(3), P(4)]);
+c = smf(levels, [P(5), P(6)]);
+d = smf(levels, [P(7), P(8)]);
+
+plot(levels, a); hold on;
+plot(levels, b); hold on;
+plot(levels, c); hold on;
+plot(levels, d); axis([0,1, 0, 1]);
+
+
