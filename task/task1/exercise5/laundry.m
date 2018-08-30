@@ -16,7 +16,7 @@ sys = addvar ( sys, 'input', 'amount_soup', [0, maxAmountSoup] );
 
 % pertenency functions
 names = ["little", "medium", "much"];
-types = ["zmf", "gaussmf", "smf"]
+types = ["zmf", "gaussmf", "smf"];
 [~, snames] = size(names);
 init = 0; interval = ( maxAmountSoup / snames );
 for i  = 1:snames
@@ -38,7 +38,7 @@ sys = addvar ( sys, 'input', 'temperature', [minTemperature, maxTemperature] );
 
 % Pertenency functions
 names = ["cold", "warm"];
-types = ["zmf", "smf"]
+types = ["zmf", "smf"];
 [~, snames] = size(names);
 init = 0; interval = ( maxTemperature / snames );
 for i  = 1:snames
@@ -58,7 +58,7 @@ sys =addvar(sys,'output','time_washing',[minTime, maxTime]);
 %Funciones de pertenencia
 
 names = ["fast", "avg", "slow"];
-types = ["trimf", "trimf", "trimf"]
+types = ["trimf", "trimf", "trimf"];
 [~, snames] = size(names);
 init = minTime; interval = ( maxTime / snames );
 for i  = 1:snames
@@ -77,7 +77,7 @@ sys =addvar(sys,'output','quality_washing',[minQuality, maxQuality]);
 %Funciones de pertenencia
 
 names = ["bad", "good"];
-types = ["gaussmf", "gaussmf"]
+types = ["gaussmf", "gaussmf"];
 [~, snames] = size(names);
 init = minQuality; interval = ( maxQuality / snames );
 for i  = 1:snames
@@ -86,7 +86,46 @@ for i  = 1:snames
   init = ent;
 end 
 
+
 %figure(4)
 %plotmf(sys,'output',2)
 
 
+% INPUTS 
+% Amount of Soup
+keySetInput1 = {'little', 'medium', 'much'};
+valueSetInput1 =[1, 2, 3];
+I1 = containers.Map(keySetInput1,valueSetInput1);
+
+% Temperature
+keySetInput2 = {'cold', 'warm'};
+valueSetInput2 =[1, 2];
+I2 = containers.Map(keySetInput2,valueSetInput2);
+
+% OUTPUTS
+
+%Time Washing
+keySetOutput1 = {'fast', 'avg', 'slow'};
+valueSetOutput1 = [1, 2 , 3];
+O1 = containers.Map(keySetOutput1, valueSetOutput1);
+
+%Quality Washing 
+keySetOutput2 = {'bad', 'good'};
+valueSetOutput2 = [1, 2 ];
+O2 = containers.Map(keySetOutput2, valueSetOutput2);
+
+wr = 1 ; oro = 1;
+
+ % Amount of Soup, Temperature Water -> Time Washing , Quality Washing
+ % The quantity of clothes is constant
+ruleList  = [
+  I1('little'), I2('cold'),  O1('slow'), O2('bad'), wr, oro
+  I1('little'), I2('warm'),  O1('avg'), O2('bad'), wr, oro
+  I1('medium'), I2('cold'),  O1('avg'), O2('good'), wr, oro
+  I1('medium'), I2('warm'),  O1('fast'), O2('good'), wr, oro
+  I1('much'), I2('cold'),  O1('slow'), O2('good'), wr, oro
+  I1('much'), I2('warm'),  O1('avg'), O2('bad'), wr, oro
+];
+
+sys = addrule(sys,ruleList);
+fuzzy( sys)
