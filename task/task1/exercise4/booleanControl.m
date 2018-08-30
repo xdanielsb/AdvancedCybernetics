@@ -1,4 +1,4 @@
-function ans = difuseControl( u, una, unb, unc, und, uz )
+function ans = booleanControl( u, una, unb, unc, und, uz )
 
  A = gauss2mf(u, [0.2 0.1 0.2 0.25 ]);
  B = smf(u, [0.24 0.25]);
