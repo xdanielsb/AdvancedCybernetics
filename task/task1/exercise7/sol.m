@@ -9,7 +9,6 @@ k = 5;
 Tm = 0.5;
 tao = 2;
 
-
 % Control with fuzzzy logic 
 
 sys = newfis('fcontrol');
