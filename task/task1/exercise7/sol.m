@@ -14,19 +14,19 @@ tao = 2;
 
 sys = newfis('fcontrol');
 
-%input
-sys = addvar(sys,'input','triang',[-2 2]);
+%input error
+sys = addvar(sys,'input','error',[-0.5 0.5]);
  % activation function
- sys = addmf(sys,'input',1,'P','gaussmf',[0.288 -1]);
- sys = addmf(sys,'input',1,'Z','gaussmf',[0.4286 0]);
- sys = addmf(sys,'input',1,'N','gaussmf',[0.288 1]);
+ sys = addmf(sys,'input',1,'N','gaussmf',[0.0134 -0.4667]);
+ sys = addmf(sys,'input',1,'Z','gaussmf', [0.107 -0.1622]);
+ sys = addmf(sys,'input',1,'P','gaussmf', [0.208 0.2904]);
  
 %output
-sys = addvar(sys, 'output', 'triang', [-2 2]);
+sys = addvar(sys, 'output', 'rate', [-0.5 0.5]);
  % activation function 
- sys = addmf(sys,'output',1,'N','gaussmf',[0.2 -0.55]);
- sys = addmf(sys,'output',1,'Z','gaussmf',[0.002 0.0]);
- sys = addmf(sys,'output',1,'P','gaussmf',[0.2 0.55]);
+ sys = addmf(sys,'output',1,'N','gaussmf', [0.08527 -0.25]);
+ sys = addmf(sys,'output',1,'Z','gaussmf', [0.04008 0]);
+ sys = addmf(sys,'output',1,'P','gaussmf', [0.08527 0.25]);
  
 %create rules
  rules = [
