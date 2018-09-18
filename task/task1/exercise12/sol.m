@@ -10,23 +10,23 @@ sys = newfis('fdouze');
 %input error
 sys = addvar(sys,'input','error',  [-1 1]);
  % activation function
- sys = addmf(sys,'input',1,'N','zmf',      [-0.9859 0.0377]);
- sys = addmf(sys,'input',1,'Z','gaussmf',    [0.3019 0]);
- sys = addmf(sys,'input',1,'P','smf',       [0.01808 1]);
+ sys = addmf(sys,'input',1,'N','zmf',      [-1 0]);
+ sys = addmf(sys,'input',1,'Z','gaussmf',    [0.3 0]);
+ sys = addmf(sys,'input',1,'P','smf',       [0 1]);
  
 %input derivate error
-sys = addvar(sys,'input','derror',   [-1 1]);
+sys = addvar(sys,'input','derror',   [-5 5]);
  % activation function
- sys = addmf(sys,'input',2,'N','zmf',     [-0.994 0.0823]);
- sys = addmf(sys,'input',2,'Z','gaussmf',     [0.4042 0]);
-sys = addmf(sys,'input',2,'P','smf',  [0.01807 1]);
+ sys = addmf(sys,'input',2,'N','zmf',     [-5 0]);
+ sys = addmf(sys,'input',2,'Z','gaussmf',     [2 0]);
+sys = addmf(sys,'input',2,'P','smf',  [0 5]);
 
 %output
 sys = addvar(sys, 'output', 'rate',  [-2 2]);
  % activation function 
- sys = addmf(sys,'output',1,'N','gaussmf',   [0.2 -0.7812]);
- sys = addmf(sys,'output',1,'Z','gaussmf',   [0.229 -0.4418]);
- sys = addmf(sys,'output',1,'P','gaussmf',   [0.2 0.09839]);
+ sys = addmf(sys,'output',1,'N','gaussmf',   [0.5 -1]);
+ sys = addmf(sys,'output',1,'Z','gaussmf',   [0.3 0]);
+ sys = addmf(sys,'output',1,'P','gaussmf',   [0.5 1]);
  
 %create rules
 % error, derror, output
