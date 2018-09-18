@@ -15,11 +15,11 @@ sys = addvar(sys,'input','error',  [-1 1]);
  sys = addmf(sys,'input',1,'P','smf',       [0 1]);
  
 %input derivate error
-sys = addvar(sys,'input','derror',   [-5 5]);
+sys = addvar(sys,'input','derror',   [-1 1]);
  % activation function
- sys = addmf(sys,'input',2,'N','zmf',     [-5 0]);
- sys = addmf(sys,'input',2,'Z','gaussmf',     [2 0]);
-sys = addmf(sys,'input',2,'P','smf',  [0 5]);
+ sys = addmf(sys,'input',2,'N','zmf',     [-1 0]);
+ sys = addmf(sys,'input',2,'Z','gaussmf',     [0.4 0]);
+sys = addmf(sys,'input',2,'P','smf',  [0 1]);
 
 %output
 sys = addvar(sys, 'output', 'rate',  [-2 2]);
