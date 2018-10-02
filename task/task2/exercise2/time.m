@@ -3,12 +3,10 @@
  date: Oct 2, 2018
 %}
 format compact; clear all; close all; clc;
-N = 24; %months
-months = linspace(1, N, N);
-A = rand(1,12)*15;
-for i = 1:N
-  stock(i) = getStock(months(i), A);
-end
+
+offset_row = 1;
+unhealthy = csvread("./heart_.csv",offset_row);
+[nimages_un, ~]= size(unhealthy)
 
 plot( months , stock)
 
@@ -21,10 +19,3 @@ y = net( 15 )
 perf = perform( net, y, stock)
 
 
-function y = getStock( i, A )
-  m = mod(i, 13);
-  if m==0
-      m = 1;
-  end
-  y = A(m);
-end 
