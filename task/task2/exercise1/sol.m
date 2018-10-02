@@ -20,6 +20,7 @@ net = train(net, T, S);
 %view (net);
 y = net( T);
 perf = perform( net, y, S)
+MSE=(1/N)*sum((S-y).^2)
 
 plot(D, S); hold on
 plot(D, T); hold on;
