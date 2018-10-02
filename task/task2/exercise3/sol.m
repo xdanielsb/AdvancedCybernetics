@@ -24,7 +24,6 @@ for i = 0:5
  fprintf("i = %d, res = %f\n", i, y);
 end 
 
-
 function A = readImg( path )
   A = rgb2gray ( imread(path) ); 
   A = double( reshape(A,1, []) );
