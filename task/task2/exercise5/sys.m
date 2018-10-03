@@ -8,15 +8,18 @@ close all; clc;
 
 a4 =2; a3=1; a2=2; a1=2; a0=1;
 
-Y = F(:,1)'
-[~, N ]= size(Y);
-time = 1:N;
-
 hiddenLayers = [10 10 10 10];
+numdelay = 4;
 net = feedforwardnet(hiddenLayers);
-net = train(net, time, Y);
+%O = O(7:57,:);
+net = train(net, I', O');
+
 %view (net);
-R = net(time);
-perf = perform( net, R, Y)
-MSE=(1/N)*sum((R-Y).^2)
+R = net(I');
+perf = perform( net, R, O')
+MSE=(1/51)*sum((R-O').^2)
+
+in = 1:51
+plot(in, O'); hold on;
+plot(in, R)
 
