@@ -6,7 +6,8 @@ format compact;
 %clear all;
 close all; clc;
 
-a4 =2; a3=1; a2=2; a1=2; a0=1;
+k=4;b3=0;b2=2;b1=4;b0=2;
+
 
 hiddenLayers = [10 10 10 10];
 numdelay = 4;
@@ -19,7 +20,7 @@ R = net(I');
 perf = perform( net, R, O')
 MSE=(1/51)*sum((R-O').^2)
 
-in = 1:51
+in = 1:51;
 plot(in, O'); hold on;
 plot(in, R)
 
