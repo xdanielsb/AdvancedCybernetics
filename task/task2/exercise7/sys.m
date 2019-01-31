@@ -4,8 +4,7 @@
 %}
 format compact; 
 %clear all;
-close all; clc;
+close all; clc; clear all;
 
-k=4;b3=0;b2=2;b1=4;b0=2;
-
+k=3;b3=1;b2=2;b1=3;b0=1;
 
