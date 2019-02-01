@@ -19,7 +19,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7"
+    ComputedModelVersion    "1.8"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -120,9 +120,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "daniel"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jan 31 10:46:07 2019"
-  RTWModifiedTimeStamp	  470832365
-  ModelVersionFormat	  "1.%<AutoIncrement:7>"
+  LastModifiedDate	  "Thu Jan 31 11:10:40 2019"
+  RTWModifiedTimeStamp	  470833833
+  ModelVersionFormat	  "1.%<AutoIncrement:8>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1073,8 +1073,8 @@ Model {
       SID		      "2"
       Position		      [225, 100, 290, 140]
       ZOrder		      -2
-      Numerator		      "[ k ]"
-      Denominator	      "[b3 b2 b1 b0]"
+      Numerator		      "[ 1 ]"
+      Denominator	      "[1 2 2 2]"
     }
     Block {
       BlockType		      Outport
