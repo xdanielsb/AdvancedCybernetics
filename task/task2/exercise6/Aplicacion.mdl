@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.222"
+    ComputedModelVersion    "1.228"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -17,7 +17,13 @@ Model {
     HasTerminateEvent	    0
     IsExportFunctionModel   0
     NumParameterArguments   0
-    NumExternalFileReferences 0
+    NumExternalFileReferences 1
+    ExternalFileReference {
+      Reference		      "neural/Control Systems/NARMA-L2 Controller"
+      Path		      "Aplicacion/NARMA-L2 Controller1"
+      SID		      "87"
+      Type		      "LIBRARY_BLOCK"
+    }
     OrderedModelArguments   1
   }
   DiagnosticSuppressor	  "on"
@@ -74,7 +80,7 @@ Model {
 	LoadSaveID		"0"
 	Extents			[848.0, 474.0]
 	ZoomFactor		[1.0]
-	Offset			[-39.999999999999943, -133.25]
+	Offset			[-11.619248390197697, -133.25]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -108,9 +114,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "daniel"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jan 31 10:34:36 2019"
-  RTWModifiedTimeStamp	  470831389
-  ModelVersionFormat	  "1.%<AutoIncrement:222>"
+  LastModifiedDate	  "Thu Jan 31 18:59:30 2019"
+  RTWModifiedTimeStamp	  470861744
+  ModelVersionFormat	  "1.%<AutoIncrement:228>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -223,7 +229,7 @@ Model {
 	  DisabledProps		  []
 	  Description		  ""
 	  StartTime		  "0.0"
-	  StopTime		  "10"
+	  StopTime		  "30"
 	  AbsTol		  "1e-6"
 	  AutoScaleAbsTol	  "off"
 	  FixedStep		  "auto"
@@ -984,51 +990,6 @@ Model {
       Decimation	      "10"
     }
     Block {
-      BlockType		      Constant
-      Value		      "1"
-      VectorParams1D	      on
-      SamplingMode	      "Sample based"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
-      LockScale		      off
-      SampleTime	      "inf"
-      FramePeriod	      "inf"
-      PreserveConstantTs      off
-    }
-    Block {
-      BlockType		      DiscreteStateSpace
-      A			      "1"
-      B			      "1"
-      C			      "1"
-      D			      "1"
-      InitialCondition	      "0"
-      SampleTime	      "1"
-      StateMustResolveToSignalObject off
-      RTWStateStorageClass    "Auto"
-      Realization	      "auto"
-    }
-    Block {
-      BlockType		      Fcn
-      Expr		      "sin(u[1])"
-      SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Gain
-      Gain		      "1"
-      Multiplication	      "Element-wise(K.*u)"
-      ParamMin		      "[]"
-      ParamMax		      "[]"
-      ParamDataTypeStr	      "Inherit: Same as input"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      Inport
       Port		      "1"
       OutputFunctionCall      off
@@ -1048,21 +1009,6 @@ Model {
       Interpolate	      on
     }
     Block {
-      BlockType		      Math
-      Operator		      "exp"
-      OutputSignalType	      "auto"
-      SampleTime	      "-1"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as first input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      IntermediateResultsDataTypeStr "Inherit: Inherit via internal rule"
-      AlgorithmType	      "Newton-Raphson"
-      Iterations	      "3"
-    }
-    Block {
       BlockType		      Mux
       Inputs		      "4"
       DisplayOption	      "none"
@@ -1071,64 +1017,11 @@ Model {
       NonVirtualBus	      off
     }
     Block {
-      BlockType		      Outport
-      Port		      "1"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: auto"
-      LockScale		      off
-      BusOutputAsStruct	      off
-      Unit		      "inherit"
-      PortDimensions	      "-1"
-      VarSizeSig	      "Inherit"
-      SampleTime	      "-1"
-      SignalType	      "auto"
-      SamplingMode	      "auto"
-      EnsureOutportIsVirtual  off
-      SourceOfInitialOutputValue "Dialog"
-      OutputWhenDisabled      "held"
-      InitialOutput	      "[]"
-      MustResolveToSignalObject	off
-      OutputWhenUnConnected   off
-      OutputWhenUnconnectedValue "0"
-      VectorParamsAs1DForOutWhenUnconnected off
-    }
-    Block {
-      BlockType		      Product
-      Inputs		      "2"
-      Multiplication	      "Element-wise(.*)"
-      CollapseMode	      "All dimensions"
-      CollapseDim	      "1"
-      InputSameDT	      on
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as first input"
-      LockScale		      off
-      RndMeth		      "Zero"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      S-Function
       FunctionName	      "system"
       SFunctionModules	      "''"
       PortCounts	      "[]"
       MultiThreadCoSim	      "auto"
-    }
-    Block {
-      BlockType		      Saturate
-      UpperLimitSource	      "Dialog"
-      UpperLimit	      "0.5"
-      LowerLimitSource	      "Dialog"
-      LowerLimit	      "-0.5"
-      LinearizeAsGain	      on
-      ZeroCross		      on
-      SampleTime	      "-1"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as input"
-      LockScale		      off
-      RndMeth		      "Floor"
     }
     Block {
       BlockType		      Step
@@ -1175,56 +1068,12 @@ Model {
       IsObserver	      off
     }
     Block {
-      BlockType		      Sum
-      IconShape		      "rectangular"
-      Inputs		      "++"
-      CollapseMode	      "All dimensions"
-      CollapseDim	      "1"
-      InputSameDT	      on
-      AccumDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as first input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Switch
-      Criteria		      "u2 >= Threshold"
-      Threshold		      "0"
-      InputSameDT	      on
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      ZeroCross		      on
-      SampleTime	      "-1"
-      AllowDiffInputSizes     off
-    }
-    Block {
       BlockType		      TransferFcn
       Numerator		      "[1]"
       Denominator	      "[1 2 1]"
       AbsoluteTolerance	      "auto"
       ContinuousStateAttributes	"''"
       Realization	      "auto"
-    }
-    Block {
-      BlockType		      UnitDelay
-      InitialCondition	      "0"
-      InputProcessing	      "Inherited"
-      SampleTime	      "1"
-      StateMustResolveToSignalObject off
-      CodeGenStateStorageClass "Auto"
-      HasFrameUpgradeWarning  on
-    }
-    Block {
-      BlockType		      ZeroOrderHold
-      SampleTime	      "1"
     }
   }
   System {
@@ -1246,7 +1095,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "85"
+    SIDHighWatermark	    "87"
     Block {
       BlockType		      Clock
       Name		      "Clock"
@@ -1255,1806 +1104,60 @@ Model {
       ZOrder		      -1
     }
     Block {
-      BlockType		      SubSystem
-      Name		      "NARMA-L2 Controller"
-      SID		      "2"
+      BlockType		      Reference
+      Name		      "NARMA-L2 Controller1"
+      SID		      "87"
       Ports		      [2, 1]
-      Position		      [230, 5, 390, 140]
-      ZOrder		      -2
-      BackgroundColor	      "cyan"
-      DropShadow	      on
+      Position		      [195, -30, 355, 105]
+      ZOrder		      2
       NamePlacement	      "alternate"
-      OpenFcn		      "nncontrolutil('nnident','',gcbh,gcb,'narma_l2');"
-      RequestExecContextInheritance off
-      Object {
-	$PropName		"MaskObject"
-	$ObjectID		21
-	$ClassName		"Simulink.Mask"
-	Type			"NARMA-L2 Controller"
-	Description		"NARMA-L2 Controller. You first train a neural network model of the plant to be controlled.  The control"
-	"ler is a rearrangement of the trained plant model.  Double-click the NARMA-L2 Controller block to begin the plant tra"
-	"ining."
-	Initialization		"xl = [0    .4   NaN  .33  .55   .55  .33  .33  NaN .80  .92 .92];\nyl = [.95 .95 NaN  .75  .75   .55"
-	"  .55  .75  NaN  .95 .95 .65];\nx2 = [0    .43 NaN .45 .45    NaN .92 1.2 NaN .63 .85 .85 .63 .63 ];\ny2 = [.39 .39 N"
-	"aN  .41 .55   NaN .65 .65 NaN .75 .75  .55  .55  .75];\nx3 = [.45 .45 NaN .42 .45 .48  NaN .33 .4 .33];\ny3 = [.75 .9"
-	"0 NaN .83 .90 .83  NaN  .98 .95 .92];\nx4 = [.75 .75 NaN .72 .75 .78  NaN  .5 .7 NaN .63 .7 .63];\ny4 = [.75 .90 NaN "
-	".83 .90 .83  NaN .95 .95 NaN .98 .95 .92];\nx5 = [.43 .43 .77 .77 .43 NaN .36 .43 .36 NaN .75 .75];\ny5 = [.37 .41 .4"
-	"1 .37 .37 NaN .42 .39 .36 NaN .41 .55];\nx6 = [.92 .92 .77 NaN .84 .77 .84];\ny6 = [.65 .39 .39 NaN .42 .39 .36];\nx1"
-	"t=.03; y1t=.31;\nx2t=.03; y2t=.85;\nx8t=.03;y8t=.21;\nx3t=.77; y3t=.53;\nx4t=.77; y4t=.44;\nx5t=.34; y5t=.49;\nx6t=.5"
-	"8; y6t=.49;\n\n\nt=(0:24)/24*2*pi;\nxs = .05*cos(t);\nys = .05*sin(t);\nxs1=xs+.45;\nys1=ys+.95;\nxs2=xs+.75;\nys2=ys"
-	"+.95;"
-	Display			"plot([[xl NaN x2]*.9-.075 ], [[yl  NaN y2]*.9-.1 ]);\nplot([[x3 NaN xs1 NaN xs2]*.9-.075 ], [[y3 NaN ys1 N"
-	"aN ys2]*.9-.1 ]);\nplot([x4 NaN x5]*.9-.075,[y4 NaN y5]*.9-.1);\nplot([x6 NaN ]*.9-.075,[y6 NaN ]*.9-.1);\ntext(x1t,y"
-	"1t,'Plant');\ntext(x8t,y8t,'Output');\ntext(x2t,y2t,'Reference');\ntext(x3t,y3t,'Control');\ntext(x4t,y4t,'Signal');\n"
-	"text(x5t,y5t,'f');\ntext(x6t,y6t,'g');\n"
-	IconUnits		"normalized"
-	Array {
-	  Type			  "Simulink.MaskParameter"
-	  Dimension		  35
-	  Object {
-	    $ObjectID		    22
-	    Type		    "edit"
-	    Name		    "Ts"
-	    Prompt		    "Sample time"
-	    Value		    "0.05"
-	  }
-	  Object {
-	    $ObjectID		    23
-	    Type		    "edit"
-	    Name		    "S1"
-	    Prompt		    "S1"
-	    Value		    "5"
-	  }
-	  Object {
-	    $ObjectID		    24
-	    Type		    "edit"
-	    Name		    "Ni"
-	    Prompt		    "Ni"
-	    Value		    "2"
-	  }
-	  Object {
-	    $ObjectID		    25
-	    Type		    "edit"
-	    Name		    "Nj"
-	    Prompt		    "Nj"
-	    Value		    "2"
-	  }
-	  Object {
-	    $ObjectID		    26
-	    Type		    "edit"
-	    Name		    "sim_file"
-	    Prompt		    "sim_file"
-	    Value		    "ModeloPlanta"
-	    Evaluate		    "off"
-	  }
-	  Object {
-	    $ObjectID		    27
-	    Type		    "popup"
-	    Array {
-	      Type		      "Cell"
-	      Dimension		      13
-	      Cell		      "trainbfg"
-	      Cell		      "trainbr "
-	      Cell		      "traincgb"
-	      Cell		      "traincgf"
-	      Cell		      "traincgp"
-	      Cell		      "traingd"
-	      Cell		      "traingdm"
-	      Cell		      "traingda"
-	      Cell		      "traingdx"
-	      Cell		      "trainlm "
-	      Cell		      "trainoss"
-	      Cell		      "trainrp "
-	      Cell		      "trainscg"
-	      PropName		      "TypeOptions"
-	    }
-	    Name		    "trainfun"
-	    Prompt		    "Training function"
-	    Value		    "trainlm "
-	  }
-	  Object {
-	    $ObjectID		    28
-	    Type		    "edit"
-	    Name		    "Use_validation"
-	    Prompt		    "Use_Validation"
-	    Value		    "0"
-	  }
-	  Object {
-	    $ObjectID		    29
-	    Type		    "edit"
-	    Name		    "Use_Testing"
-	    Prompt		    "Use_Testing"
-	    Value		    "0"
-	  }
-	  Object {
-	    $ObjectID		    30
-	    Type		    "edit"
-	    Name		    "max_i"
-	    Prompt		    "max_i"
-	    Value		    "4"
-	  }
-	  Object {
-	    $ObjectID		    31
-	    Type		    "edit"
-	    Name		    "min_i"
-	    Prompt		    "min_i"
-	    Value		    "0"
-	  }
-	  Object {
-	    $ObjectID		    32
-	    Type		    "edit"
-	    Name		    "max_i_int"
-	    Prompt		    "max_i_int"
-	    Value		    "10"
-	  }
-	  Object {
-	    $ObjectID		    33
-	    Type		    "edit"
-	    Name		    "min_i_int"
-	    Prompt		    "min_i_int"
-	    Value		    "1"
-	  }
-	  Object {
-	    $ObjectID		    34
-	    Type		    "edit"
-	    Name		    "sam_training"
-	    Prompt		    "sam_training"
-	    Value		    "800"
-	  }
-	  Object {
-	    $ObjectID		    35
-	    Type		    "edit"
-	    Name		    "epochs"
-	    Prompt		    "epochs"
-	    Value		    "800"
-	  }
-	  Object {
-	    $ObjectID		    36
-	    Type		    "edit"
-	    Name		    "minp"
-	    Prompt		    "minp"
-	    Value		    "0.22390462955116197108"
-	  }
-	  Object {
-	    $ObjectID		    37
-	    Type		    "edit"
-	    Name		    "maxp"
-	    Prompt		    "maxp"
-	    Value		    "3.6322088127470766317"
-	  }
-	  Object {
-	    $ObjectID		    38
-	    Type		    "edit"
-	    Name		    "mint"
-	    Prompt		    "mint"
-	    Value		    "0"
-	  }
-	  Object {
-	    $ObjectID		    39
-	    Type		    "edit"
-	    Name		    "maxt"
-	    Prompt		    "maxt"
-	    Value		    "3.6322088127470766317"
-	  }
-	  Object {
-	    $ObjectID		    40
-	    Type		    "edit"
-	    Name		    "Normalize"
-	    Prompt		    "Normalize"
-	    Value		    "1"
-	  }
-	  Object {
-	    $ObjectID		    41
-	    Type		    "edit"
-	    Name		    "IW1_1"
-	    Prompt		    "IW1_1"
-	    Value		    "[-0.63792758068910804248 -1.4462135652241352446 -0.31069670121700782017;-1.7332748172489558236 -0.745"
-	    "4655236614258218 -0.24956690180675036861;-0.077763696608458401927 -0.048073158018840753125 0.1549940989276896719;"
-	    "-0.17483955935644474033 0.08659063654331164428 -0.0061784769039886127187;-0.82086208554044082231 0.20924040646012"
-	    "945222 0.90387382707387520231]"
-	  }
-	  Object {
-	    $ObjectID		    42
-	    Type		    "edit"
-	    Name		    "IW3_2"
-	    Prompt		    "IW3_2"
-	    Value		    "[-1.6276729870533450661 1.7485098590388565842 0.0670079230856246294;-0.97040601992913022578 1.9606152"
-	    "627515625042 -0.95862668185225152762;-1.2840017886077279563 -1.1007114136504858593 -1.6815094796974159319;-2.4209"
-	    "043776063809972 -0.17847777393591118811 -0.40090418981080644389;0.67311005211822017014 -0.79564142300766305116 -2"
-	    ".1527931736355574444]"
-	  }
-	  Object {
-	    $ObjectID		    43
-	    Type		    "edit"
-	    Name		    "IW5_3"
-	    Prompt		    "IW5_3"
-	    Value		    "0.31715822059343795614"
-	  }
-	  Object {
-	    $ObjectID		    44
-	    Type		    "edit"
-	    Name		    "LW2_1"
-	    Prompt		    "LW2_1"
-	    Value		    "[-0.0025082688037063147375 -0.00046851729139937132139 -0.13809994042310694273 -3.5686551301866238362 "
-	    "-0.06572439610562456902]"
-	  }
-	  Object {
-	    $ObjectID		    45
-	    Type		    "edit"
-	    Name		    "LW4_3"
-	    Prompt		    "LW4_3"
-	    Value		    "[-1.2174335666506754805 0.66755543754233215292 -0.35549440086362227298 0.37555888879093435317 0.16829"
-	    "538268700708348]"
-	  }
-	  Object {
-	    $ObjectID		    46
-	    Type		    "edit"
-	    Name		    "LW5_4"
-	    Prompt		    "LW5_4"
-	    Value		    "0.37461645380701985575"
-	  }
-	  Object {
-	    $ObjectID		    47
-	    Type		    "edit"
-	    Name		    "LW6_5"
-	    Prompt		    "LW6_5"
-	    Value		    "-0.010426892645199192788"
-	  }
-	  Object {
-	    $ObjectID		    48
-	    Type		    "edit"
-	    Name		    "LW6_2"
-	    Prompt		    "LW6_2"
-	    Value		    "2.9968298020622787803"
-	  }
-	  Object {
-	    $ObjectID		    49
-	    Type		    "edit"
-	    Name		    "B1"
-	    Prompt		    "B1"
-	    Value		    "[2.2786076379064708064;0.94466670495100624194;0.16613017972203975026;-0.052837980946727786113;-3.0228"
-	    "914589715341066]"
-	  }
-	  Object {
-	    $ObjectID		    50
-	    Type		    "edit"
-	    Name		    "B2"
-	    Prompt		    "B2"
-	    Value		    "-0.22816845458294363058"
-	  }
-	  Object {
-	    $ObjectID		    51
-	    Type		    "edit"
-	    Name		    "B3"
-	    Prompt		    "B3"
-	    Value		    "[2.4201251360799531653;1.1318438951517604263;-0.079384361809327438908;-1.051860169687806934;2.3681311"
-	    "397697881738]"
-	  }
-	  Object {
-	    $ObjectID		    52
-	    Type		    "edit"
-	    Name		    "B4"
-	    Prompt		    "B4"
-	    Value		    "-1.2669777941335709226"
-	  }
-	  Object {
-	    $ObjectID		    53
-	    Type		    "edit"
-	    Name		    "Limit_output"
-	    Prompt		    "Limit_output"
-	    Value		    "0"
-	  }
-	  Object {
-	    $ObjectID		    54
-	    Type		    "edit"
-	    Name		    "min_output"
-	    Prompt		    "min_output"
-	    Value		    "-Inf"
-	  }
-	  Object {
-	    $ObjectID		    55
-	    Type		    "edit"
-	    Name		    "max_output"
-	    Prompt		    "max_output"
-	    Value		    "Inf"
-	  }
-	  Object {
-	    $ObjectID		    56
-	    Type		    "edit"
-	    Name		    "Use_Previous_Weights"
-	    Prompt		    "Use_Previous_Weights"
-	    Value		    "1"
-	  }
-	  PropName		  "Parameters"
-	}
-      }
-      System {
-	Name			"NARMA-L2 Controller"
-	Location		[12, 45, 1305, 801]
-	Open			off
-	PortBlocksUseCompactNotation off
-	SetDomainSpec		off
-	DomainSpecType		"Deduce"
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"100"
-	Block {
-	  BlockType		  Inport
-	  Name			  "Reference"
-	  SID			  "3"
-	  Position		  [505, 45, 535, 65]
-	  ZOrder		  -1
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "Plant Output"
-	  SID			  "4"
-	  Position		  [30, 62, 60, 78]
-	  ZOrder		  -2
-	  Port			  "2"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant"
-	  SID			  "5"
-	  Position		  [500, 265, 520, 285]
-	  ZOrder		  -3
-	  Value			  "B1"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant1"
-	  SID			  "6"
-	  Position		  [665, 275, 685, 295]
-	  ZOrder		  -4
-	  Value			  "B2"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant2"
-	  SID			  "7"
-	  Position		  [105, 255, 125, 275]
-	  ZOrder		  -5
-	  Value			  "Normalize"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant3"
-	  SID			  "8"
-	  Position		  [125, 130, 145, 150]
-	  ZOrder		  -6
-	  Value			  "Normalize"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant4"
-	  SID			  "9"
-	  Position		  [1080, 215, 1100, 235]
-	  ZOrder		  -7
-	  Value			  "Normalize"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant5"
-	  SID			  "10"
-	  Position		  [500, 385, 520, 405]
-	  ZOrder		  -8
-	  Value			  "B3"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant6"
-	  SID			  "11"
-	  Position		  [665, 415, 685, 435]
-	  ZOrder		  -9
-	  Value			  "B4"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant7"
-	  SID			  "12"
-	  Position		  [635, 115, 655, 135]
-	  ZOrder		  -10
-	  Value			  "Normalize"
-	}
-	Block {
-	  BlockType		  DiscreteStateSpace
-	  Name			  "Discrete State-Space4"
-	  SID			  "13"
-	  Position		  [350, 201, 460, 239]
-	  ZOrder		  -11
-	  A			  "blkdiag([zeros(1,Nj-1);eye(Nj-2,Nj-2) zeros(Nj-2,1)],[zeros(1,Ni-1);eye(Ni-2,Ni-2) zeros(Ni-2,1)])"
-	  B			  "blkdiag(eye(Nj-1,1),eye(Ni-1,1))"
-	  C			  "blkdiag([zeros(1,Nj-1);eye(Nj-1,Nj-1)],[zeros(eye(double(Ni>1)),Ni-1);eye(Ni-2,Ni-1)])"
-	  D			  "blkdiag([1;zeros(Nj-1,1)],[eye(double(Ni>1));zeros(Ni-2,1)])"
-	  SampleTime		  "Ts"
-	}
-	Block {
-	  BlockType		  Fcn
-	  Name			  "Fcn"
-	  SID			  "14"
-	  Position		  [105, 205, 140, 235]
-	  ZOrder		  -12
-	  Expr			  "(u(1)-minp)*2/(maxp-minp) - 1"
-	}
-	Block {
-	  BlockType		  Fcn
-	  Name			  "Fcn1"
-	  SID			  "15"
-	  Position		  [115, 55, 150, 85]
-	  ZOrder		  -13
-	  Expr			  "(u(1)-mint)*2/(maxt-mint) - 1"
-	}
-	Block {
-	  BlockType		  Fcn
-	  Name			  "Fcn2"
-	  SID			  "16"
-	  Position		  [1075, 145, 1110, 175]
-	  ZOrder		  -14
-	  Expr			  "(u(1)+1)*(maxp-minp)/2 + minp"
-	}
-	Block {
-	  BlockType		  Fcn
-	  Name			  "Fcn3"
-	  SID			  "17"
-	  Position		  [625, 40, 660, 70]
-	  ZOrder		  -15
-	  Expr			  "(u(1)-mint)*2/(maxt-mint) - 1"
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Matrix\nGain"
-	  SID			  "18"
-	  Position		  [490, 190, 520, 220]
-	  ZOrder		  -16
-	  Gain			  "IW1_1"
-	  Multiplication	  "Matrix(K*u)"
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Matrix\nGain1"
-	  SID			  "19"
-	  Position		  [495, 325, 525, 355]
-	  ZOrder		  -17
-	  Gain			  "IW3_2"
-	  Multiplication	  "Matrix(K*u)"
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Matrix\nGain2"
-	  SID			  "20"
-	  Position		  [660, 200, 690, 230]
-	  ZOrder		  -18
-	  Gain			  "LW2_1"
-	  Multiplication	  "Matrix(K*u)"
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Matrix\nGain3"
-	  SID			  "21"
-	  Position		  [660, 340, 690, 370]
-	  ZOrder		  -19
-	  Gain			  "LW4_3"
-	  Multiplication	  "Matrix(K*u)"
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Matrix\nGain5"
-	  SID			  "22"
-	  Position		  [815, 210, 845, 240]
-	  ZOrder		  -20
-	  Gain			  "LW6_2"
-	  Multiplication	  "Matrix(K*u)"
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Matrix\nGain8"
-	  SID			  "23"
-	  Position		  [840, 350, 870, 380]
-	  ZOrder		  -21
-	  Gain			  "LW6_5*LW5_4*IW5_3"
-	  Multiplication	  "Matrix(K*u)"
-	}
-	Block {
-	  BlockType		  Mux
-	  Name			  "Mux"
-	  SID			  "24"
-	  Ports			  [2, 1]
-	  Position		  [285, 193, 330, 242]
-	  ZOrder		  -22
-	  ShowName		  off
-	  Inputs		  "2"
-	  DisplayOption		  "signals"
-	}
-	Block {
-	  BlockType		  Product
-	  Name			  "Product"
-	  SID			  "25"
-	  Ports			  [2, 1]
-	  Position		  [940, 207, 970, 238]
-	  ZOrder		  -23
-	  Inputs		  "*/"
-	  RndMeth		  "Floor"
-	}
-	Block {
-	  BlockType		  Saturate
-	  Name			  "Saturation1"
-	  SID			  "26"
-	  Ports			  [1, 1]
-	  Position		  [1235, 210, 1265, 240]
-	  ZOrder		  -24
-	  InputPortMap		  "u0"
-	  UpperLimit		  "max_i"
-	  LowerLimit		  "min_i"
-	  ZeroCross		  off
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "Sum"
-	  SID			  "27"
-	  Ports			  [2, 1]
-	  Position		  [875, 112, 905, 143]
-	  ZOrder		  -25
-	  Inputs		  "+-"
-	}
-	Block {
-	  BlockType		  Switch
-	  Name			  "Switch"
-	  SID			  "28"
-	  Position		  [170, 255, 200, 285]
-	  ZOrder		  -26
-	  Threshold		  "0.5"
-	  ZeroCross		  off
-	}
-	Block {
-	  BlockType		  Switch
-	  Name			  "Switch1"
-	  SID			  "29"
-	  Position		  [180, 130, 210, 160]
-	  ZOrder		  -27
-	  Threshold		  "0.5"
-	  ZeroCross		  off
-	}
-	Block {
-	  BlockType		  Switch
-	  Name			  "Switch2"
-	  SID			  "30"
-	  Position		  [1140, 210, 1170, 240]
-	  ZOrder		  -28
-	  Threshold		  "0.5"
-	  ZeroCross		  off
-	}
-	Block {
-	  BlockType		  Switch
-	  Name			  "Switch3"
-	  SID			  "31"
-	  Position		  [705, 100, 735, 130]
-	  ZOrder		  -29
-	  Threshold		  "0.5"
-	  ZeroCross		  off
-	}
-	Block {
-	  BlockType		  UnitDelay
-	  Name			  "Unit Delay4"
-	  SID			  "32"
-	  Position		  [230, 225, 260, 255]
-	  ZOrder		  -30
-	  SampleTime		  "Ts"
-	}
-	Block {
-	  BlockType		  ZeroOrderHold
-	  Name			  "Zero-Order\nHold"
-	  SID			  "33"
-	  Position		  [1300, 206, 1335, 244]
-	  ZOrder		  -31
-	  SampleTime		  "Ts"
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "netsum"
-	  SID			  "34"
-	  Ports			  [2, 1]
-	  Position		  [550, 194, 575, 236]
-	  ZOrder		  -32
-	  RequestExecContextInheritance	off
-	  Object {
-	    $PropName		    "MaskObject"
-	    $ObjectID		    57
-	    $ClassName		    "Simulink.Mask"
-	    Display		    "disp('+')"
-	  }
-	  System {
-	    Name		    "netsum"
-	    Location		    [288, 45, 836, 581]
-	    Open		    off
-	    PortBlocksUseCompactNotation off
-	    SetDomainSpec	    off
-	    DomainSpecType	    "Deduce"
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "In1"
-	      SID		      "35"
-	      Position		      [20, 50, 40, 70]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "In2"
-	      SID		      "36"
-	      Position		      [20, 90, 40, 110]
-	      ZOrder		      -2
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "netsum"
-	      SID		      "37"
-	      Ports		      [2, 1]
-	      Position		      [90, 59, 115, 101]
-	      ZOrder		      -3
-	      Inputs		      "2"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Out1"
-	      SID		      "38"
-	      Position		      [145, 80, 165, 100]
-	      ZOrder		      -4
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      ZOrder		      1
-	      SrcBlock		      "In1"
-	      SrcPort		      1
-	      DstBlock		      "netsum"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      2
-	      SrcBlock		      "In2"
-	      SrcPort		      1
-	      DstBlock		      "netsum"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      3
-	      SrcBlock		      "netsum"
-	      SrcPort		      1
-	      DstBlock		      "Out1"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "netsum1"
-	  SID			  "39"
-	  Ports			  [2, 1]
-	  Position		  [720, 205, 745, 240]
-	  ZOrder		  -33
-	  RequestExecContextInheritance	off
-	  Object {
-	    $PropName		    "MaskObject"
-	    $ObjectID		    58
-	    $ClassName		    "Simulink.Mask"
-	    Display		    "disp('+')"
-	  }
-	  System {
-	    Name		    "netsum1"
-	    Location		    [286, 45, 834, 581]
-	    Open		    off
-	    PortBlocksUseCompactNotation off
-	    SetDomainSpec	    off
-	    DomainSpecType	    "Deduce"
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "In1"
-	      SID		      "40"
-	      Position		      [20, 65, 40, 85]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "In2"
-	      SID		      "41"
-	      Position		      [20, 105, 40, 125]
-	      ZOrder		      -2
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "netsum1"
-	      SID		      "42"
-	      Ports		      [2, 1]
-	      Position		      [90, 60, 115, 95]
-	      ZOrder		      -3
-	      Inputs		      "2"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Out1"
-	      SID		      "43"
-	      Position		      [145, 80, 165, 100]
-	      ZOrder		      -4
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      ZOrder		      1
-	      SrcBlock		      "In1"
-	      SrcPort		      1
-	      DstBlock		      "netsum1"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      2
-	      SrcBlock		      "In2"
-	      SrcPort		      1
-	      DstBlock		      "netsum1"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      3
-	      SrcBlock		      "netsum1"
-	      SrcPort		      1
-	      DstBlock		      "Out1"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "netsum2"
-	  SID			  "44"
-	  Ports			  [2, 1]
-	  Position		  [550, 334, 575, 376]
-	  ZOrder		  -34
-	  RequestExecContextInheritance	off
-	  Object {
-	    $PropName		    "MaskObject"
-	    $ObjectID		    59
-	    $ClassName		    "Simulink.Mask"
-	    Display		    "disp('+')"
-	  }
-	  System {
-	    Name		    "netsum2"
-	    Location		    [288, 45, 836, 581]
-	    Open		    off
-	    PortBlocksUseCompactNotation off
-	    SetDomainSpec	    off
-	    DomainSpecType	    "Deduce"
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "In1"
-	      SID		      "45"
-	      Position		      [20, 50, 40, 70]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "In2"
-	      SID		      "46"
-	      Position		      [20, 90, 40, 110]
-	      ZOrder		      -2
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "netsum"
-	      SID		      "47"
-	      Ports		      [2, 1]
-	      Position		      [90, 59, 115, 101]
-	      ZOrder		      -3
-	      Inputs		      "2"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Out1"
-	      SID		      "48"
-	      Position		      [145, 80, 165, 100]
-	      ZOrder		      -4
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      ZOrder		      1
-	      SrcBlock		      "In1"
-	      SrcPort		      1
-	      DstBlock		      "netsum"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      2
-	      SrcBlock		      "In2"
-	      SrcPort		      1
-	      DstBlock		      "netsum"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      3
-	      SrcBlock		      "netsum"
-	      SrcPort		      1
-	      DstBlock		      "Out1"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "netsum3"
-	  SID			  "49"
-	  Ports			  [2, 1]
-	  Position		  [720, 345, 745, 380]
-	  ZOrder		  -35
-	  RequestExecContextInheritance	off
-	  Object {
-	    $PropName		    "MaskObject"
-	    $ObjectID		    60
-	    $ClassName		    "Simulink.Mask"
-	    Display		    "disp('+')"
-	  }
-	  System {
-	    Name		    "netsum3"
-	    Location		    [286, 45, 834, 581]
-	    Open		    off
-	    PortBlocksUseCompactNotation off
-	    SetDomainSpec	    off
-	    DomainSpecType	    "Deduce"
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "In1"
-	      SID		      "50"
-	      Position		      [20, 65, 40, 85]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "In2"
-	      SID		      "51"
-	      Position		      [20, 105, 40, 125]
-	      ZOrder		      -2
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "netsum1"
-	      SID		      "52"
-	      Ports		      [2, 1]
-	      Position		      [90, 60, 115, 95]
-	      ZOrder		      -3
-	      Inputs		      "2"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Out1"
-	      SID		      "53"
-	      Position		      [145, 80, 165, 100]
-	      ZOrder		      -4
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      ZOrder		      1
-	      SrcBlock		      "In1"
-	      SrcPort		      1
-	      DstBlock		      "netsum1"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      2
-	      SrcBlock		      "In2"
-	      SrcPort		      1
-	      DstBlock		      "netsum1"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      3
-	      SrcBlock		      "netsum1"
-	      SrcPort		      1
-	      DstBlock		      "Out1"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "purelin"
-	  SID			  "54"
-	  Ports			  [1, 1]
-	  Position		  [770, 213, 795, 237]
-	  ZOrder		  -36
-	  RequestExecContextInheritance	off
-	  Object {
-	    $PropName		    "MaskObject"
-	    $ObjectID		    61
-	    $ClassName		    "Simulink.Mask"
-	    Display		    "plot([-1 1],[0 0],[-1 1],[-1 1])"
-	  }
-	  System {
-	    Name		    "purelin"
-	    Location		    [112, 101, 420, 418]
-	    Open		    off
-	    PortBlocksUseCompactNotation off
-	    SetDomainSpec	    off
-	    DomainSpecType	    "Deduce"
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "n"
-	      SID		      "55"
-	      Position		      [25, 33, 55, 47]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "a"
-	      SID		      "56"
-	      Position		      [205, 33, 235, 47]
-	      ZOrder		      -2
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      ZOrder		      1
-	      SrcBlock		      "n"
-	      SrcPort		      1
-	      DstBlock		      "a"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "purelin1"
-	  SID			  "57"
-	  Ports			  [1, 1]
-	  Position		  [770, 353, 795, 377]
-	  ZOrder		  -37
-	  RequestExecContextInheritance	off
-	  Object {
-	    $PropName		    "MaskObject"
-	    $ObjectID		    62
-	    $ClassName		    "Simulink.Mask"
-	    Display		    "plot([-1 1],[0 0],[-1 1],[-1 1])"
-	  }
-	  System {
-	    Name		    "purelin1"
-	    Location		    [110, 99, 418, 416]
-	    Open		    off
-	    PortBlocksUseCompactNotation off
-	    SetDomainSpec	    off
-	    DomainSpecType	    "Deduce"
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "n"
-	      SID		      "58"
-	      Position		      [25, 33, 55, 47]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "a"
-	      SID		      "59"
-	      Position		      [205, 33, 235, 47]
-	      ZOrder		      -2
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      ZOrder		      1
-	      SrcBlock		      "n"
-	      SrcPort		      1
-	      DstBlock		      "a"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "tansig"
-	  SID			  "60"
-	  Ports			  [1, 1]
-	  Position		  [600, 203, 625, 227]
-	  ZOrder		  -38
-	  RequestExecContextInheritance	off
-	  Object {
-	    $PropName		    "MaskObject"
-	    $ObjectID		    63
-	    $ClassName		    "Simulink.Mask"
-	    Display		    "plot([-1 1],[0 0],[-1 -.9 -.8 -.7 -.6 -.5 -.4 -.3 -.2 -.1 0 .1 .2 .3 .4 .5 .6 .7 .8 .9 1],2./(1+exp"
-	    "(-8*[-1 -.9 -.8 -.7 -.6 -.5 -.4 -.3 -.2 -.1 0 .1 .2 .3 .4 .5 .6 .7 .8 .9 1]))-1)"
-	  }
-	  System {
-	    Name		    "tansig"
-	    Location		    [12, 45, 700, 722]
-	    Open		    off
-	    PortBlocksUseCompactNotation off
-	    SetDomainSpec	    off
-	    DomainSpecType	    "Deduce"
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "n"
-	      SID		      "61"
-	      Position		      [25, 33, 55, 47]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Math
-	      Name		      "Exp"
-	      SID		      "62"
-	      Ports		      [1, 1]
-	      Position		      [155, 25, 185, 55]
-	      ZOrder		      -2
-	    }
-	    Block {
-	      BlockType		      Gain
-	      Name		      "Gain"
-	      SID		      "63"
-	      Position		      [90, 25, 120, 55]
-	      ZOrder		      -3
-	      Gain		      "-2"
-	    }
-	    Block {
-	      BlockType		      Gain
-	      Name		      "Gain1"
-	      SID		      "64"
-	      Position		      [370, 30, 400, 60]
-	      ZOrder		      -4
-	      Gain		      "2"
-	    }
-	    Block {
-	      BlockType		      Math
-	      Name		      "Reciprocal"
-	      SID		      "65"
-	      Ports		      [1, 1]
-	      Position		      [295, 30, 325, 60]
-	      ZOrder		      -5
-	      Operator		      "reciprocal"
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum"
-	      SID		      "66"
-	      Ports		      [2, 1]
-	      Position		      [225, 27, 255, 58]
-	      ZOrder		      -6
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum1"
-	      SID		      "67"
-	      Ports		      [2, 1]
-	      Position		      [445, 27, 475, 58]
-	      ZOrder		      -7
-	      Inputs		      "+-"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "one"
-	      SID		      "68"
-	      Position		      [160, 85, 180, 105]
-	      ZOrder		      -8
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "one1"
-	      SID		      "69"
-	      Position		      [375, 85, 395, 105]
-	      ZOrder		      -9
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "a"
-	      SID		      "70"
-	      Position		      [515, 38, 545, 52]
-	      ZOrder		      -10
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      ZOrder		      1
-	      SrcBlock		      "n"
-	      SrcPort		      1
-	      DstBlock		      "Gain"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      2
-	      SrcBlock		      "Gain"
-	      SrcPort		      1
-	      DstBlock		      "Exp"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      3
-	      SrcBlock		      "Exp"
-	      SrcPort		      1
-	      Points		      [20, 0]
-	      DstBlock		      "Sum"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      4
-	      SrcBlock		      "one"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      DstBlock		      "Sum"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      5
-	      SrcBlock		      "Sum"
-	      SrcPort		      1
-	      DstBlock		      "Reciprocal"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      6
-	      SrcBlock		      "Reciprocal"
-	      SrcPort		      1
-	      DstBlock		      "Gain1"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      7
-	      SrcBlock		      "Gain1"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      DstBlock		      "Sum1"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      8
-	      SrcBlock		      "one1"
-	      SrcPort		      1
-	      Points		      [30, 0]
-	      DstBlock		      "Sum1"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      9
-	      SrcBlock		      "Sum1"
-	      SrcPort		      1
-	      DstBlock		      "a"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "tansig1"
-	  SID			  "71"
-	  Ports			  [1, 1]
-	  Position		  [600, 343, 625, 367]
-	  ZOrder		  -39
-	  RequestExecContextInheritance	off
-	  Object {
-	    $PropName		    "MaskObject"
-	    $ObjectID		    64
-	    $ClassName		    "Simulink.Mask"
-	    Display		    "plot([-1 1],[0 0],[-1 -.9 -.8 -.7 -.6 -.5 -.4 -.3 -.2 -.1 0 .1 .2 .3 .4 .5 .6 .7 .8 .9 1],2./(1+exp"
-	    "(-8*[-1 -.9 -.8 -.7 -.6 -.5 -.4 -.3 -.2 -.1 0 .1 .2 .3 .4 .5 .6 .7 .8 .9 1]))-1)"
-	  }
-	  System {
-	    Name		    "tansig1"
-	    Location		    [12, 45, 700, 722]
-	    Open		    off
-	    PortBlocksUseCompactNotation off
-	    SetDomainSpec	    off
-	    DomainSpecType	    "Deduce"
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "n"
-	      SID		      "72"
-	      Position		      [25, 33, 55, 47]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Math
-	      Name		      "Exp"
-	      SID		      "73"
-	      Ports		      [1, 1]
-	      Position		      [155, 25, 185, 55]
-	      ZOrder		      -2
-	    }
-	    Block {
-	      BlockType		      Gain
-	      Name		      "Gain"
-	      SID		      "74"
-	      Position		      [90, 25, 120, 55]
-	      ZOrder		      -3
-	      Gain		      "-2"
-	    }
-	    Block {
-	      BlockType		      Gain
-	      Name		      "Gain1"
-	      SID		      "75"
-	      Position		      [370, 30, 400, 60]
-	      ZOrder		      -4
-	      Gain		      "2"
-	    }
-	    Block {
-	      BlockType		      Math
-	      Name		      "Reciprocal"
-	      SID		      "76"
-	      Ports		      [1, 1]
-	      Position		      [295, 30, 325, 60]
-	      ZOrder		      -5
-	      Operator		      "reciprocal"
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum"
-	      SID		      "77"
-	      Ports		      [2, 1]
-	      Position		      [225, 27, 255, 58]
-	      ZOrder		      -6
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum1"
-	      SID		      "78"
-	      Ports		      [2, 1]
-	      Position		      [445, 27, 475, 58]
-	      ZOrder		      -7
-	      Inputs		      "+-"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "one"
-	      SID		      "79"
-	      Position		      [160, 85, 180, 105]
-	      ZOrder		      -8
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "one1"
-	      SID		      "80"
-	      Position		      [375, 85, 395, 105]
-	      ZOrder		      -9
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "a"
-	      SID		      "81"
-	      Position		      [515, 38, 545, 52]
-	      ZOrder		      -10
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      ZOrder		      1
-	      SrcBlock		      "n"
-	      SrcPort		      1
-	      DstBlock		      "Gain"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      2
-	      SrcBlock		      "Gain"
-	      SrcPort		      1
-	      DstBlock		      "Exp"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      3
-	      SrcBlock		      "Exp"
-	      SrcPort		      1
-	      Points		      [20, 0]
-	      DstBlock		      "Sum"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      4
-	      SrcBlock		      "one"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      DstBlock		      "Sum"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      5
-	      SrcBlock		      "Sum"
-	      SrcPort		      1
-	      DstBlock		      "Reciprocal"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      6
-	      SrcBlock		      "Reciprocal"
-	      SrcPort		      1
-	      DstBlock		      "Gain1"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      7
-	      SrcBlock		      "Gain1"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      DstBlock		      "Sum1"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      8
-	      SrcBlock		      "one1"
-	      SrcPort		      1
-	      Points		      [30, 0]
-	      DstBlock		      "Sum1"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      9
-	      SrcBlock		      "Sum1"
-	      SrcPort		      1
-	      DstBlock		      "a"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "Control Signal"
-	  SID			  "82"
-	  Position		  [1395, 215, 1425, 235]
-	  ZOrder		  -40
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  ZOrder		  1
-	  SrcBlock		  "Constant3"
-	  SrcPort		  1
-	  Points		  [15, 0]
-	  DstBlock		  "Switch1"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  2
-	  SrcBlock		  "Fcn1"
-	  SrcPort		  1
-	  Points		  [10, 0]
-	  DstBlock		  "Switch1"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  3
-	  SrcBlock		  "Plant Output"
-	  SrcPort		  1
-	  Points		  [25, 0]
-	  Branch {
-	    ZOrder		    4
-	    DstBlock		    "Fcn1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    5
-	    Points		    [0, 110; 75, 0]
-	    DstBlock		    "Switch1"
-	    DstPort		    3
-	  }
-	}
-	Line {
-	  ZOrder		  6
-	  SrcBlock		  "netsum1"
-	  SrcPort		  1
-	  DstBlock		  "purelin"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  7
-	  SrcBlock		  "Constant1"
-	  SrcPort		  1
-	  Points		  [10, 0; 0, -55]
-	  DstBlock		  "netsum1"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  8
-	  SrcBlock		  "Matrix\nGain2"
-	  SrcPort		  1
-	  DstBlock		  "netsum1"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  9
-	  SrcBlock		  "netsum"
-	  SrcPort		  1
-	  DstBlock		  "tansig"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  10
-	  SrcBlock		  "Constant"
-	  SrcPort		  1
-	  Points		  [10, 0]
-	  DstBlock		  "netsum"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  11
-	  SrcBlock		  "tansig"
-	  SrcPort		  1
-	  DstBlock		  "Matrix\nGain2"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  12
-	  SrcBlock		  "Matrix\nGain"
-	  SrcPort		  1
-	  DstBlock		  "netsum"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  13
-	  SrcBlock		  "netsum3"
-	  SrcPort		  1
-	  DstBlock		  "purelin1"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  14
-	  SrcBlock		  "Constant6"
-	  SrcPort		  1
-	  Points		  [10, 0; 0, -55]
-	  DstBlock		  "netsum3"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  15
-	  SrcBlock		  "Matrix\nGain3"
-	  SrcPort		  1
-	  DstBlock		  "netsum3"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  16
-	  SrcBlock		  "netsum2"
-	  SrcPort		  1
-	  DstBlock		  "tansig1"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  17
-	  SrcBlock		  "Constant5"
-	  SrcPort		  1
-	  Points		  [10, 0]
-	  DstBlock		  "netsum2"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  18
-	  SrcBlock		  "tansig1"
-	  SrcPort		  1
-	  DstBlock		  "Matrix\nGain3"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  19
-	  SrcBlock		  "Matrix\nGain1"
-	  SrcPort		  1
-	  Points		  [5, 0]
-	  DstBlock		  "netsum2"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  20
-	  SrcBlock		  "purelin"
-	  SrcPort		  1
-	  DstBlock		  "Matrix\nGain5"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  21
-	  SrcBlock		  "Matrix\nGain5"
-	  SrcPort		  1
-	  Points		  [10, 0]
-	  DstBlock		  "Sum"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  22
-	  SrcBlock		  "Sum"
-	  SrcPort		  1
-	  Points		  [10, 0; 0, 85]
-	  DstBlock		  "Product"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  23
-	  SrcBlock		  "purelin1"
-	  SrcPort		  1
-	  DstBlock		  "Matrix\nGain8"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  24
-	  SrcBlock		  "Matrix\nGain8"
-	  SrcPort		  1
-	  Points		  [50, 0]
-	  DstBlock		  "Product"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  25
-	  SrcBlock		  "Constant7"
-	  SrcPort		  1
-	  Points		  [30, 0]
-	  DstBlock		  "Switch3"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  26
-	  SrcBlock		  "Fcn3"
-	  SrcPort		  1
-	  Points		  [25, 0]
-	  DstBlock		  "Switch3"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  27
-	  SrcBlock		  "Reference"
-	  SrcPort		  1
-	  Points		  [60, 0]
-	  Branch {
-	    ZOrder		    28
-	    DstBlock		    "Fcn3"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    29
-	    Points		    [0, 110; 90, 0]
-	    DstBlock		    "Switch3"
-	    DstPort		    3
-	  }
-	}
-	Line {
-	  ZOrder		  30
-	  SrcBlock		  "Switch3"
-	  SrcPort		  1
-	  Points		  [120, 0]
-	  DstBlock		  "Sum"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  31
-	  SrcBlock		  "Switch1"
-	  SrcPort		  1
-	  Points		  [45, 0; 0, 60]
-	  DstBlock		  "Mux"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  32
-	  SrcBlock		  "Mux"
-	  SrcPort		  1
-	  DstBlock		  "Discrete State-Space4"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  33
-	  SrcBlock		  "Discrete State-Space4"
-	  SrcPort		  1
-	  Points		  [10, 0]
-	  Branch {
-	    ZOrder		    34
-	    DstBlock		    "Matrix\nGain"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    35
-	    Points		    [0, 120]
-	    DstBlock		    "Matrix\nGain1"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  ZOrder		  36
-	  SrcBlock		  "Zero-Order\nHold"
-	  SrcPort		  1
-	  Points		  [0, 0; 15, 0]
-	  Branch {
-	    ZOrder		    37
-	    DstBlock		    "Control Signal"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    38
-	    Points		    [0, 250; -1210, 0]
-	    Branch {
-	      ZOrder		      39
-	      Points		      [-105, 0; 0, -255]
-	      DstBlock		      "Fcn"
-	      DstPort		      1
-	    }
-	    Branch {
-	      ZOrder		      40
-	      Points		      [0, -195]
-	      DstBlock		      "Switch"
-	      DstPort		      3
-	    }
-	  }
-	}
-	Line {
-	  ZOrder		  41
-	  SrcBlock		  "Fcn"
-	  SrcPort		  1
-	  Points		  [0, 40]
-	  DstBlock		  "Switch"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  42
-	  SrcBlock		  "Constant2"
-	  SrcPort		  1
-	  Points		  [25, 0]
-	  DstBlock		  "Switch"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  43
-	  SrcBlock		  "Unit Delay4"
-	  SrcPort		  1
-	  Points		  [5, 0]
-	  DstBlock		  "Mux"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  44
-	  SrcBlock		  "Switch"
-	  SrcPort		  1
-	  Points		  [0, -30]
-	  DstBlock		  "Unit Delay4"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  45
-	  SrcBlock		  "Saturation1"
-	  SrcPort		  1
-	  DstBlock		  "Zero-Order\nHold"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  46
-	  SrcBlock		  "Product"
-	  SrcPort		  1
-	  Points		  [55, 0]
-	  Branch {
-	    ZOrder		    47
-	    Points		    [0, -65]
-	    DstBlock		    "Fcn2"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    48
-	    Points		    [0, 70; 95, 0]
-	    DstBlock		    "Switch2"
-	    DstPort		    3
-	  }
-	}
-	Line {
-	  ZOrder		  49
-	  SrcBlock		  "Constant4"
-	  SrcPort		  1
-	  DstBlock		  "Switch2"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  50
-	  SrcBlock		  "Switch2"
-	  SrcPort		  1
-	  DstBlock		  "Saturation1"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  51
-	  SrcBlock		  "Fcn2"
-	  SrcPort		  1
-	  Points		  [10, 0]
-	  DstBlock		  "Switch2"
-	  DstPort		  1
-	}
-      }
+      LibraryVersion	      "1.97"
+      SourceBlock	      "neural/Control Systems/NARMA-L2 Controller"
+      SourceType	      "NARMA-L2 Controller"
+      SourceProductName	      "Neural Network Toolbox"
+      SourceProductBaseCode   "NN"
+      ContentPreviewEnabled   on
+      Normalize		      "1"
+      IW1_1		      "[1.8023271178216322408 -0.37683763178631712876 -0.21478013603716875068 0.034433071133119358409 0.0"
+      "35372945338310611552;0.52341885077653649283 0.5335482610124637759 -0.56686699308754329163 -0.0013649542552300448"
+      "182 -0.0021844703880990424746;0.058112811307826063578 -1.8234081905081362951 0.89858655190234204557 -0.062446763"
+      "422672399435 -0.062917657954808470233]"
+      IW3_2		      "[1.8746666191199146123 -0.69902230672744425366 0.24622087590368069154 -0.0023895651978085657129 -0"
+      ".0023877539793476613983;-0.56972372754683753282 -1.8202470206274654618 0.66879353764390658821 -0.035623964990602"
+      "691172 -0.035622427349752197601;1.981933585424585198 -0.43572366170425164134 0.18689536266952774812 -0.007279147"
+      "3731166284403 -0.0072791144507636275363]"
+      IW5_3		      "0.41041097009818089392"
+      LW2_1		      "[-0.42166696377344875524 -1.5081932115783327486 -0.64712470058221094327]"
+      LW4_3		      "[-0.37990432738485635511 -0.68237789270001780739 -0.69987578286007823269]"
+      LW5_4		      "-0.011423197354096069692"
+      LW6_5		      "0.39215874546144913193"
+      LW6_2		      "-1.3257696899206334873"
+      B1		      "[-1.579520869869686317;0.21835444230427825119;2.1022039975349895435]"
+      B2		      "0.5614287659250551954"
+      B3		      "[-2.0226249582007782557;-0.03354238508283930581;2.0056098955956929153]"
+      B4		      "-0.7096785275194168463"
+      Limit_output	      "0"
+      min_output	      "-Inf"
+      max_output	      "Inf"
+      Use_Previous_Weights    "1"
+      Ts		      "0.01"
+      S1		      "3"
+      Ni		      "3"
+      Nj		      "3"
+      sim_file		      "ModeloPlanta"
+      trainfun		      "trainlm "
+      Use_validation	      "1"
+      Use_Testing	      "1"
+      max_i		      "1"
+      min_i		      "0"
+      max_i_int		      "10"
+      min_i_int		      "1"
+      sam_training	      "800"
+      epochs		      "1200"
+      minp		      "0.069009852357685419477"
+      maxp		      "0.25237951103979738843"
+      mint		      "-0.076250131991622463468"
+      maxt		      "0.25237951103979738843"
     }
     Block {
       BlockType		      Step
@@ -3069,9 +1172,9 @@ Model {
       BlockType		      TransferFcn
       Name		      "Transfer Fcn"
       SID		      "84"
-      Position		      [455, 77, 515, 113]
+      Position		      [440, 42, 525, 108]
       ZOrder		      -4
-      Numerator		      "[ k ]"
+      Numerator		      "[ k*0.95]"
       Denominator	      "[ b3 b2 b1 b0]"
     }
     Block {
@@ -3090,7 +1193,7 @@ Model {
       RequestExecContextInheritance off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		65
+	$ObjectID		21
 	$ClassName		"Simulink.Mask"
 	Type			"X(2Y) scope."
 	Description		"X(2Y) scope using MATLAB graph window.  First input is used as time base.  Enter plotting ranges."
@@ -3102,35 +1205,35 @@ Model {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  5
 	  Object {
-	    $ObjectID		    66
+	    $ObjectID		    22
 	    Type		    "edit"
 	    Name		    "xmin"
 	    Prompt		    "x-min:"
 	    Value		    "0"
 	  }
 	  Object {
-	    $ObjectID		    67
+	    $ObjectID		    23
 	    Type		    "edit"
 	    Name		    "xmax"
 	    Prompt		    "x-max:"
 	    Value		    "10"
 	  }
 	  Object {
-	    $ObjectID		    68
+	    $ObjectID		    24
 	    Type		    "edit"
 	    Name		    "ymin"
 	    Prompt		    "y-min:"
 	    Value		    "0"
 	  }
 	  Object {
-	    $ObjectID		    69
+	    $ObjectID		    25
 	    Type		    "edit"
 	    Name		    "ymax"
 	    Prompt		    "y-max:"
 	    Value		    "2"
 	  }
 	  Object {
-	    $ObjectID		    70
+	    $ObjectID		    26
 	    Type		    "edit"
 	    Name		    "st"
 	    Prompt		    "Sample time:"
@@ -3255,42 +1358,42 @@ Model {
       SrcPort		      1
       Points		      [45, 0]
       Branch {
+	ZOrder			13
+	Points			[0, -20; -14, 0; 0, -35]
+	DstBlock		"NARMA-L2 Controller1"
+	DstPort			1
+      }
+      Branch {
 	ZOrder			3
 	Points			[0, 140; 530, 0; 0, -90]
 	DstBlock		"X(2Y)\n Graph"
 	DstPort			3
       }
-      Branch {
-	ZOrder			4
-	Points			[0, -20]
-	DstBlock		"NARMA-L2 Controller"
-	DstPort			1
-      }
-    }
-    Line {
-      ZOrder		      5
-      SrcBlock		      "NARMA-L2 Controller"
-      SrcPort		      1
-      Points		      [28, 0; 0, 20]
-      DstBlock		      "Transfer Fcn"
-      DstPort		      1
     }
     Line {
       ZOrder		      6
       SrcBlock		      "Transfer Fcn"
       SrcPort		      1
-      Points		      [95, 0]
+      Points		      [31, 0; 0, 20]
       Branch {
-	ZOrder			7
-	Points			[0, 59; -430, 0; 0, -49]
-	DstBlock		"NARMA-L2 Controller"
+	ZOrder			12
+	Points			[0, 59; -350, 0; 0, -1; -41, 0; 0, -83]
+	DstBlock		"NARMA-L2 Controller1"
 	DstPort			2
       }
       Branch {
-	ZOrder			8
+	ZOrder			11
 	DstBlock		"X(2Y)\n Graph"
 	DstPort			2
       }
+    }
+    Line {
+      ZOrder		      14
+      SrcBlock		      "NARMA-L2 Controller1"
+      SrcPort		      1
+      Points		      [55, 0; 0, 35]
+      DstBlock		      "Transfer Fcn"
+      DstPort		      1
     }
   }
 }
