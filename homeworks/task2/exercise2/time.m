@@ -2,7 +2,7 @@
  name: Daniel Santos
  date: Oct 2, 2018
 %}
-%format compact; clear all; close all; clc;
+format compact; clear all; close all; clc;
 
 offset_row = 1;
 heart = csvread("./heart_rate.csv",offset_row);

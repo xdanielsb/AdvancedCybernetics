@@ -1,5 +1,10 @@
+%{
+  author: Daniel Santas
+  date: February 5, 2019
 
+%}
 
+clear all; close all; clc;
 a4 = 2; a3 = 2; a2 = 4; a1 = 2; a0 = 1;
 
 %Simulaci�n del sistema
