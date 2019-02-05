@@ -1,60 +1,62 @@
+%{
+ name: Daniel Santos
+ date: Oct 2, 2018
+%}
+format compact; clear all; close all; clc;
 
-% Datos  Find serie de Data
+offset_row = 1;
+heart = csvread("./heart_rate.csv",offset_row);
+[nrows, ~]= size(heart);
 
-Y = Datos(:,5);
-X = Datos(:,1:2);
-
-figure
-plot(Y);
-xlabel('Tiempo (seg)'); ylabel('x(t)');
-title('Mackey-Glass serie de tiempo ca�tica');
-
-%Generaci�n del sistema difuso a emplear
-fis = genfis1(Datos, 2);
-
-%Presentaci�n de las funciones de pertenec�a empleados
-figure
-for input_index=1:4,
-    subplot(2,2,input_index)
-    [x,y]=plotmf(fis,'input',input_index);
-    plot(x,y)
-    axis([-inf inf 0 1.2]);
-    xlabel(['Input ' int2str(input_index)]);
+sal = heart(:, 1)'; % heart rate
+from = 3;
+int = zeros(nrows,from);
+for i = from+1:nrows
+   for j = 1:from
+     int(i,j) = sal(i-j);
+   end
 end
+int = int(from+1:nrows,:);
+Y = sal(:,from+1:nrows);
+X  = int;
+Y = Y';
+nrows = nrows -from;
+
+plot(1:nrows, Y); hold on;
+
+%Fuzzy System
+opt = genfisOptions('GridPartition');
+opt.NumMembershipFunctions = [2];
+opt.InputMembershipFunctionType = ["gbellmf"];
+fis = genfis(X,Y,opt);
+[x2,mf] = plotmf(fis,'input',1);
+%plot(x2,mf)
+xlabel('input 1 (gaussmf)')
+
 
 %Entrenamiento del sistema difuso mediante anfis
-[fistrn,error] = anfis(Datos,fis);
+[fistrn,error] = anfis([X Y],fis);
 
-%Presentaci�n de las funciones de pertenencia
-figure
-for input_index=1:4,
-    subplot(2,2,input_index)
-    [x,y]=plotmf(fistrn,'input',input_index);
-    plot(x,y)
-    axis([-inf inf 0 1.2]);
-    xlabel(['Input ' int2str(input_index)]);
-end
-
-%Simulaci�n del sistema
+%Simulation
 Ys = evalfis(X,fistrn);
 
-%Presentaci�n de resultados
+%Results
 figure
 hold on
 plot(Y,'r')
 plot(Ys,'b')
 hold off
 xlabel('Tiempo (seg)'); ylabel('x(t)');
-title('Mackey-Glass serie de tiempo ca�tica');
+title('Heart fis');
 legend('Reales', 'Simulados')
 
-%Figura del error
+%Plot Error
 e = Y - Ys;
 figure
 plot(e)
 xlabel('Tiempo (seg)'); ylabel('e(t)');
 title('Error');
 
-%Error cuadr�tico medio
+%MSE
 N = length(e);
 MSE = (1/N)*sum(e.^2)
