@@ -2,7 +2,7 @@
 
 The following repo shows some  theory of applied Artifical Intelligence  to control different kind of systems. This was made with porpuse to share knowledge about this interesting topics;
 
-All codes were made in Matlab with its tools of fuzzy logic, neural Networks and simulike, some of them were written in python with the help of libraries like tensorflow.  Feel free to send me a pull request or an issue to improve the code.
+All codes were made in Matlab with its tools of fuzzy logic, neural Networks and simulink, some of them were written in python with the help of libraries like tensorflow.  Feel free to send me a pull request or an issue to improve the code.
 
 # Topics cover in this repo
 
