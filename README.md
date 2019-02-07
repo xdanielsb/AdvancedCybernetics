@@ -1,4 +1,4 @@
-# Cybernetics
+# Cybernetics [![Awesome]
 
 The following repo shows some  theory of applied Artifical Intelligence  to control different kind of systems. This was made with porpuse to share knowledge about this interesting topics;
 
