@@ -9,7 +9,7 @@ heart = csvread("./heart_rate.csv",offset_row);
 [nrows, ~]= size(heart);
 
 sal = heart(:, 1)'; % heart rate
-from = 3;
+from = 2;
 int = zeros(nrows,from);
 for i = from+1:nrows
    for j = 1:from
