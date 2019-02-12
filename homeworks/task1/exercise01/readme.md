@@ -1,3 +1,39 @@
+
+# Design of automatisms
+
+Design and simulate a control system based on automations
+(Boolean algebra) that allows to regulate the filling of the
+tank of figure 1. The inflow should be considered
+total as qi = Y1q1 + Y2q2 + Y3q3, where (Y1, Y2, Y3)
+are the respective activation functions. For the control
+system is equipped with four sensors which must be
+Properly dispose throughout the tank. The system
+can be considered first-rate with a downtime
+with the following transfer function:
+
+<p align="center">
+    <img src="transfer_function.png" alt="Model" border="2" />
+</p>
+
+Image model
+<p align="center">
+    <img src="system.png" alt="Model" border="2" />
+</p>
+
+
+
+Proposed solution
+================
+
+
+### Results
+
+<p align="center">
+    <img src="result.png" alt="Model" border="2" />
+</p>
+
+### Code
+
 ```matlab
 %{
     Name: Daniel Santos
