@@ -7,7 +7,7 @@ format compact;
 close all; clc; clear all;
 
 k = 3 ;
-b3 = 1 ;
+b3 = 2 ;
 b2 = 4;
 b1 = 3;
 b0 = 3;
